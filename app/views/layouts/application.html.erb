@@ -2,17 +2,34 @@
 <html>
   <head>
     <title>Weightchart</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name='viewport' content='width=device-width,initial-scale=1'>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   </head>
-
   <body>
+     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <%= link_to 'TOPページ', root_path, class: 'navbar-brand' %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+     </button>
+     <div class="collapse navbar-collapse" id="navbarNavDropdown">
+       <ul class="navbar-nav">
+         <li class="nav-item active">
+           <%= link_to '体重', weights_path, class: 'nav-link' %>
+         </li>
+         <li class="nav-item">
+         </li>
+         <li class="nav-item">
+         </li>
+       </ul>
+     </div>
+    </nav>
+     <p class='notice'><%= notice %></p>
+     <p class='alert'><%= alert %></p>
     <%= yield %>
   </body>
 </html>
