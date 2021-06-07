@@ -23,9 +23,9 @@
          </li>
          <% if user_signed_in? %>
          <li class='nav-item'>
-           <%= link_to 'ログアウト', sign_out_path, class: 'nav-link' %>
-         <% else %>
+           <%= link_to 'ログアウト', destroy_user_session_path, class: 'nav-link' %>
          </li>
+         <% else %>
          <li class='nav-item'>
            <%= link_to '新規登録', new_user_registration_path, class: 'nav-link' %>
          </li>
