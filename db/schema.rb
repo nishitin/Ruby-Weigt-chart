@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2021_06_04_003141) do
 
   create_table "weights", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.float "weight", default: 0.0, null: false
+    t.float "value", default: 0.0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_weights_on_user_id"
