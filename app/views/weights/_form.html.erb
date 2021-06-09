@@ -1,0 +1,8 @@
+<%= form_with model: @weight do |f| %>
+  <%= f.label :体重 %>
+  <%= f.number_field :value %>
+
+  <%= f.label :日付 %>
+  <%= f.date_field :created_at %>
+  <%= f.submit '送信', class: 'btn btn-primary' %>
+<% end %>
