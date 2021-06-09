@@ -6,8 +6,11 @@
    <div class='collapse navbar-collapse' id='navbarNavDropdown'>
      <ul class='navbar-nav'>
        <li class='nav-item'>
-          <%= link_to '体重', new_weight_path, class: 'nav-link' %>
-        </li>
+         <%= link_to '体重', new_weight_path, class: 'nav-link' %>
+       </li>
+       <li class='nav-item'>
+         <%= link_to 'プロフィール', new_profile_path, class: 'nav-link' %>
+       </li>
        <% if user_signed_in? %>
          <li class='nav-item'>
            <%= link_to 'ログアウト', destroy_user_session_path, class: 'nav-link' %>
@@ -20,8 +23,6 @@
            <%= link_to 'ログイン', new_user_session_path, class: 'nav-link' %>
          </li>
       <% end %>
-         <li class='nav-item'>
-         </li>
        </ul>
      </div>
 </nav>
