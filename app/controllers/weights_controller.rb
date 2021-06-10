@@ -10,7 +10,6 @@ class WeightsController < ApplicationController
   end
 
   def show
-    @weight = find([:id])
   end
 
   def create
