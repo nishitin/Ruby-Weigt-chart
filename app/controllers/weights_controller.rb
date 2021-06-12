@@ -1,4 +1,6 @@
 class WeightsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @weights = Weight.all
     # ↓ロジック的にはログインしたユーザが持っている体重という感じ
@@ -6,7 +8,7 @@ class WeightsController < ApplicationController
   end
 
   def new
-    @weights = Weight.new
+    @weight = Weight.new
   end
 
   def show
