@@ -1,10 +1,10 @@
 class WeightsController < ApplicationController
   before_action :authenticate_user!
+  # ↑これは登録していないとできないアクションだよってこと
 
   def index
     @weights = Weight.all
-    # ↓ロジック的にはログインしたユーザが持っている体重という感じ
-    # @weight_chart = current_user.weights.value
+    @weight_chart = current_user.weight
   end
 
   def new
@@ -25,9 +25,14 @@ class WeightsController < ApplicationController
   end
 
   def edit
+    @weight = weight.find([:id])
   end
 
   def update
+  end
+
+  def destroy
+    @weight = Weight.find([:id])
   end
 
   private

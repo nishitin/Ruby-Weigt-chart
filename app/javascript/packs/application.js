@@ -9,8 +9,7 @@ import * as ActiveStorage from "@rails/activestorage";
 import "channels";
 import "bootstrap";
 import "../stylesheets/application";
-import "chartkick";
-import "chart.js";
+import "chartkick/chart.js";
 
 Rails.start();
 Turbolinks.start();
