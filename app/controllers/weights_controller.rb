@@ -18,27 +18,37 @@ class WeightsController < ApplicationController
     @weight = current_user.weight.build(weight_params)
 
     if @weight.save
-       redirect_to root_path, flash: { notice: '体重の投稿が反映されました' }
+       redirect_to weights_path, flash: { notice: '体重の投稿が反映されました' }
     else
        render :new
     end
   end
 
   def edit
-    @weight = weight.find([:id])
+    @weight = Weight.find(params[:id])
   end
 
   def update
+    if @weight.update(update_params)
+      redirect_to weights_path, flash: { notice: '体重の編集が反映されました' }
+    else
+      render :edit
+    end
   end
 
   def destroy
-    @weight = Weight.find([:id])
+    @weight = Weight.find(params[:id])
   end
 
   private
 
+  # これはcreateしたとき
   def weight_params
     params.require(:weight).permit(:value)
   end
 
+  #これはupdpateしたとき
+  def update_params
+    params.require(:weight).permit(:value)
+  end
 end
