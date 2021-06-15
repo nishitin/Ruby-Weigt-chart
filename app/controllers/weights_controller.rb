@@ -29,6 +29,7 @@ class WeightsController < ApplicationController
   end
 
   def update
+    @weight = Weight.find(params[:id])
     if @weight.update(update_params)
       redirect_to weights_path, flash: { notice: '体重の編集が反映されました' }
     else
