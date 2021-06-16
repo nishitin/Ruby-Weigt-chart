@@ -1,6 +1,6 @@
 <div class='container'>
   <h1>体重投稿画面</h1>
-  <%= line_chart @weight_chart.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).group("date(created_at)").sum(:value) %>
+  <%= line_chart @weight_chart.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).group("date(input_time)").sum(:value), curve: false %>
 
   <table>
     <thead>
@@ -13,9 +13,9 @@
     <% @weights.each do |weight| %>
     <tr>
       <td><%= weight.value %></td>
-      <td><%= weight.created_at.strftime('%Y年%m月%d日') %></td>
+      <td><%= weight.input_time %></td>
       <td><%= link_to '編集', edit_weight_path(weight), class: 'btn btn-primary' %></td>
-      <td><%= link_to '削除', weight_path(weight),:mehod => :delete, class: 'btn btn-danger' %></td>
+      <td><%= button_to '削除', weight_path(weight.id), method: :delete, data: { confirm: '削除してもいいですか？' }, class: 'btn btn-danger' %></td>
     <tr>
     <% end %>
     </tbody>

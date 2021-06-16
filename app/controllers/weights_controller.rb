@@ -1,6 +1,7 @@
 class WeightsController < ApplicationController
   before_action :authenticate_user!
   # ↑これは登録していないとできないアクションだよってこと
+  before_action :set_weight, only: [:edit, :destroy]
 
   def index
     @weights = Weight.all
@@ -11,21 +12,17 @@ class WeightsController < ApplicationController
     @weight = Weight.new
   end
 
-  def show
-  end
-
   def create
     @weight = current_user.weight.build(weight_params)
 
     if @weight.save
-       redirect_to weights_path, flash: { notice: '体重の投稿が反映されました' }
+      redirect_to weights_path, flash: { notice: '体重の投稿が反映されました' }
     else
-       render :new
+      render :new
     end
   end
 
   def edit
-    @weight = Weight.find(params[:id])
   end
 
   def update
@@ -38,18 +35,24 @@ class WeightsController < ApplicationController
   end
 
   def destroy
-    @weight = Weight.find(params[:id])
+    @weight.delete
+    redirect_to weight_path, flash: { notice: '投稿が削除されました' }
   end
 
   private
 
   # これはcreateしたとき
   def weight_params
-    params.require(:weight).permit(:value)
+    params.require(:weight).permit(:value, :input_time)
   end
 
   #これはupdpateしたとき
   def update_params
     params.require(:weight).permit(:value)
+  end
+
+  # 共通化するところ
+  def set_weight
+    @weight = Weight.find(params[:id])
   end
 end
