@@ -3,7 +3,7 @@ class CreateWeights < ActiveRecord::Migration[6.1]
     create_table :weights do |t|
       t.references :user, null: false, foreign_key: true
       t.float :value, null: false, default: 0.0
-      t.time :input_time
+      t.datetime :input_time
 
       t.timestamps
     end
