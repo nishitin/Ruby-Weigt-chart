@@ -13,7 +13,7 @@
     <% @weights.each do |weight| %>
     <tr>
       <td><%= weight.value %></td>
-      <td><%= weight.input_time %></td>
+      <td><%= weight.input_time.strftime('%Y年%m月%d日') %></td>
       <td><%= link_to '編集', edit_weight_path(weight), class: 'btn btn-primary' %></td>
       <td><%= button_to '削除', weight_path(weight.id), method: :delete, data: { confirm: '削除してもいいですか？' }, class: 'btn btn-danger' %></td>
     <tr>
