@@ -36,7 +36,7 @@ class WeightsController < ApplicationController
 
   def destroy
     @weight.delete
-    redirect_to weight_path, flash: { notice: '投稿が削除されました' }
+    redirect_to weights_path, flash: { notice: '投稿が削除されました' }
   end
 
   private
